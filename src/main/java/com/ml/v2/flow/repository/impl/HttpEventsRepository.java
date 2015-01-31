@@ -43,8 +43,10 @@ public class HttpEventsRepository extends AbstractSlottedRepository<HttpEvent, H
 
     public void printSlotMetrics() throws IOException {
         File outputDir = new File("/tmp/slots/metrics/");
-        if(outputDir.exists())
+        if(outputDir.exists()){
             outputDir.delete();
+        }
+        outputDir.mkdir();
 
         for (String slotKey : slots.keySet()) {
             PrintWriter writer = new PrintWriter(new File(outputDir, "slot_" + slotKey));

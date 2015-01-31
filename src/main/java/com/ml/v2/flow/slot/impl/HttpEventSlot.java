@@ -2,6 +2,7 @@ package com.ml.v2.flow.slot.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import com.ml.v2.flow.event.api.Measurable;
 import com.ml.v2.flow.event.impl.HttpEvent;
@@ -36,7 +37,11 @@ public class HttpEventSlot extends AbstractMeasurableAlarmableSlot<Integer, Http
 
     @Override
     protected Collection<HttpEvent> instantiateEvents() {
-        return new ArrayList<HttpEvent>();
+        return Collections.synchronizedList(new ArrayList<HttpEvent>());
+    }
+
+    public Integer getDefaultMetricValue() {
+        return 0;
     }
 
     @Override

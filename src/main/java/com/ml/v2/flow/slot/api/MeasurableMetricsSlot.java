@@ -16,4 +16,6 @@ import com.ml.v2.flow.event.api.Measurable;
 public interface MeasurableMetricsSlot<N extends Number, E extends Event> extends MeasurableSlot<E> {
 
     N getMetric(Measurable m);
+
+    N getDefaultMetricValue();
 }

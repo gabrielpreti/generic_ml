@@ -1,10 +1,10 @@
 package com.ml.v2.integ;
 
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.model.dataformat.CsvDataFormat;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.model.dataformat.CsvDataFormat;
 
 public class AccessLogEventsProducer extends RouteBuilder {
 
@@ -25,6 +25,10 @@ public class AccessLogEventsProducer extends RouteBuilder {
                 log("result is ${body}").//
                 end().//
                 log("Done");
+
+        from("file:/tmp/analysis?delete=true&preMove=.run").//
+                autoStartup(true).//
+                beanRef("httpEventsModel", "runBatchAnalysis");
     }
 
 }

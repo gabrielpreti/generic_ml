@@ -36,4 +36,13 @@
         <constructor-arg index="0"  ref="slotKeyStrategy"/>
     </bean>
 
+    <bean id="httpEventsModel" class="com.ml.v2.model.impl.HttpEventsModel">
+        <constructor-arg index="0" ref="httpEventsRepository"/>
+        <constructor-arg index="1" value="30"/>
+        <constructor-arg index="2" value="15"/>
+        <constructor-arg index="3" value="5"/>
+    </bean>
+
+
+
 </beans>

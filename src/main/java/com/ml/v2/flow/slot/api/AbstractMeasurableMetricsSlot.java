@@ -46,7 +46,11 @@ public abstract class AbstractMeasurableMetricsSlot<N extends Number, E extends 
 
     @Override
     public N getMetric(Measurable m) {
-        return metrics.get(m);
+        if (metrics.containsKey(m)) {
+            return metrics.get(m);
+        } else {
+            return getDefaultMetricValue();
+        }
     }
 
     @Override
